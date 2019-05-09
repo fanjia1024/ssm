@@ -1,0 +1,21 @@
+CREATE TABLE
+    tbl_dept
+    (
+        dept_id INT NOT NULL AUTO_INCREMENT,
+        dept_name VARCHAR(255),
+        PRIMARY KEY (dept_id)
+    )
+    ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE=utf8_general_ci COMMENT='部门表';
+    CREATE TABLE
+    tbl_emp
+    (
+        emp_id INT NOT NULL AUTO_INCREMENT,
+        emp_name VARCHAR(255),
+        gender CHAR(1),
+        email VARCHAR(255) NOT NULL,
+        d_id INT NOT NULL,
+        PRIMARY KEY (emp_id),
+        CONSTRAINT fk_emp_dept FOREIGN KEY (d_id) REFERENCES `tbl_dept` (`dept_id`),
+        INDEX fk_emp_dept (d_id)
+    )
+    ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE=utf8_general_ci COMMENT='员工表';
